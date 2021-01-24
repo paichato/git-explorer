@@ -1,4 +1,5 @@
 import {createGlobalStyle} from 'styled-components';
+import gitBg from '../assets/github-background.svg';
 
 export default createGlobalStyle`
 *{
@@ -8,13 +9,19 @@ export default createGlobalStyle`
     box-sizing: border-box;
 }
 body{
-    background: #F0F0F5;
+    background: #F0F0F5 url(${gitBg});
     -webkit-font-smoothing: antialiased;
 
 }
 
 body, input, button{
     font: 16px Roboto, sans-serif;
+}
+
+#root{
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 40px 20px;
 }
 
 `
