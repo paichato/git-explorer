@@ -31,9 +31,10 @@ button{
     border: none;
     color: white;
     font-weight: bold;
+    transition: all 0.2s ease-in-out;
 
     &:hover{
-
+        background: ${shade(0.2,'#04D361' )}
     }
 }
 `
