@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import {shade} from 'polished';
 
 
 export const Title= styled.h1`
@@ -30,5 +31,9 @@ button{
     border: none;
     color: white;
     font-weight: bold;
+
+    &:hover{
+
+    }
 }
 `
