@@ -10,7 +10,11 @@ export default createGlobalStyle`
 body{
     background: #F0F0F5;
     -webkit-font-smoothing: antialiased;
-    
+
+}
+
+body, input, button{
+    font: 16px Roboto, sans-serif;
 }
 
 `
