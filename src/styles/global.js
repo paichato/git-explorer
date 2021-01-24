@@ -9,7 +9,7 @@ export default createGlobalStyle`
     box-sizing: border-box;
 }
 body{
-    background: #F0F0F5 url(${gitBg});
+    background: #F0F0F5 url(${gitBg}) no-repeat 70% top;
     -webkit-font-smoothing: antialiased;
 
 }
@@ -22,6 +22,9 @@ body, input, button{
     max-width: 960px;
     margin: 0 auto;
     padding: 40px 20px;
+}
+button{
+    cursor: pointer;
 }
 
 `
