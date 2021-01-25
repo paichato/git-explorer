@@ -15,7 +15,8 @@ function Dashboard() {
         const response= await api.get(`repos/${newRepo}`);
         console.log(response.data);
         const repository=response.data;
-        setRepositories([...repositories, repository])
+        setRepositories([...repositories, repository]);
+        setNewRepo('');
         
 
     }
@@ -29,14 +30,17 @@ function Dashboard() {
                 <button type="submit">Search</button>
             </Form>
             <Repositories>
-                <a href="teste">
-                    <img src="https://avatars.githubusercontent.com/u/65548563?s=460&u=aeb76087c3f98948fe4228b17831d4d7cefb17ed&v=4" alt="Marlon D Jesus"></img>
+               {repositories.map(repository=>{
+                   return(
+                    <a key={repository.full_name} href="teste">
+                    <img src={repository.owner.avatar_url} alt={repository.owner.login} ></img>
                     <div>
-                        <strong>send</strong>
-                        <p>This a SPA Landing page of `Send`</p>
-                    </div>
-                <FiChevronRight size={20}/>
-                </a>
+                       <strong>{repository.full_name}</strong>
+                       <p>{repository.description}</p>
+                   </div>
+               <FiChevronRight size={20}/>
+               </a>
+               )})}
                 
                 
             </Repositories>
