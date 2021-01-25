@@ -7,8 +7,8 @@ import Repository from '../Pages/Repository'
 function Routes(){
     return(
         <Switch>
-            <Route path="/" exact component={Dashboard}></Route>
-            <Route path="/repository/:repository+" component={Repository}></Route>
+            <Route path="/git-explorer" exact component={Dashboard}></Route>
+            <Route path="/git-explorer/repository/:repository+" component={Repository}></Route>
         </Switch>
     )
 }
