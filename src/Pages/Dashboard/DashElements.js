@@ -2,6 +2,7 @@ import styled from 'styled-components';
 import {shade} from 'polished';
 
 
+
 export const Title= styled.h1`
 font-size: 48px;
 color: #3A3A3A;
@@ -48,6 +49,8 @@ export const Repositories=styled.div`
 margin-top:80px;
 max-width: 700px;
 
+
+
 a{
     background:#fff;
     border-radius:5px;
@@ -57,6 +60,14 @@ a{
     text-decoration: none;
     display: flex;
     align-items:center;
+    transition: all 0.2s ease-in-out;
+
+    &:hover{
+        transform: translateX(10px);
+    }
+    &+a{
+    margin-top:16px;
+}
 }
 
 img{
@@ -77,5 +88,9 @@ strong{
 p{
     font-size: 18px;
     color:#A8A8B3;
+}
+svg{
+    margin-left:auto;
+    color: #CBCBD6;
 }
 `
