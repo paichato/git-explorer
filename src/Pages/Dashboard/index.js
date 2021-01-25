@@ -1,4 +1,4 @@
-import React, {useState} from 'react'
+import React, {useState, useEffect} from 'react'
 import { Title, Form, Repositories, Error } from './DashElements'
 import logo from '../../assets/logo.svg'
 import {FiChevronRight} from 'react-icons/fi';
@@ -7,7 +7,26 @@ import api from '../../services/api';
 function Dashboard() {
     const [newRepo, setNewRepo]=useState('');
     const [inputError,setInputError]=useState('');
-    const [repositories, setRepositories]= useState([]);
+    const [repositories, setRepositories]= useState(()=>{
+        const storagedRepositories=
+        localStorage.getItem('@GithubExplorer:repositories',);
+
+        if(storagedRepositories){
+            return JSON.parse(storagedRepositories);
+        }else{
+            return [];
+        }
+            
+        });
+    
+        useEffect(() => {
+            localStorage.setItem('@GithubExplorer:repositories',
+            JSON.stringify(repositories),)
+            
+        }, [repositories]);
+
+    
+
     async function  handleRepository(event){
         //Add new repo
         console.log(newRepo);  
@@ -23,6 +42,7 @@ function Dashboard() {
         const repository=response.data;
         setRepositories([...repositories, repository]);
         setNewRepo('');
+        setInputError('');
         
         }catch(err){
             setInputError('Error on search for repo')
@@ -37,7 +57,7 @@ function Dashboard() {
         <>
             <img src={logo} alt="Github Explorer"/>
             <Title>Explore repos on GitHub</Title>
-            <Form onSubmit={handleRepository} action="">
+            <Form hasError={!!inputError} onSubmit={handleRepository} action="">
                 <input value={newRepo} onChange={(e)=>setNewRepo(e.target.value)} placeholder="Write the name of the repo. Ex: facebook/react"/>
                 <button type="submit">Search</button>
             </Form>

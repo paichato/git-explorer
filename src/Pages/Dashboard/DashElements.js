@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled, {css} from 'styled-components';
 import {shade} from 'polished';
 
 
@@ -22,6 +22,13 @@ input{
     border:0;
     border-radius: 5px 0 0 5px;
     color: #3A3A3A;
+    border: 2px solid #fff;
+    transition: all 0.2s ease-in-out;
+
+    ${(props)=>props.hasError && css `
+    border-color: #c53030;
+    
+    `}
 
     &::placeholder{
         color: #a8a8b3;
