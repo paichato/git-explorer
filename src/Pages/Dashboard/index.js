@@ -1,15 +1,22 @@
-import React from 'react'
+import React, {useState} from 'react'
 import { Title, Form, Repositories } from './DashElements'
 import logo from '../../assets/logo.svg'
 import {FiChevronRight} from 'react-icons/fi';
 
 function Dashboard() {
+    const [newRepo, setNewRepo]=useState('')
+    const [repositories, setRepositories]= useState([]);
+    const handleRepository=()=>{
+        //Add new repo
+        console.log(newRepo);   
+    }
+
     return (
         <>
             <img src={logo} alt="Github Explorer"/>
             <Title>Explore repos on GitHub</Title>
-            <Form action="">
-                <input placeholder="Write the name of the repo"/>
+            <Form onSubmit={handleRepository} action="">
+                <input value={newRepo} onChange={(e)=>setNewRepo(e.target.value)} placeholder="Write the name of the repo"/>
                 <button type="submit">Search</button>
             </Form>
             <Repositories>
