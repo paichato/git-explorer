@@ -77,7 +77,8 @@ img{
 }
 
 div{
-    margin-left:16px;
+    flex:1;
+    margin: 0 16px;
 
 }
 strong{

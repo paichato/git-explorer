@@ -26,7 +26,7 @@ function Dashboard() {
             <img src={logo} alt="Github Explorer"/>
             <Title>Explore repos on GitHub</Title>
             <Form onSubmit={handleRepository} action="">
-                <input value={newRepo} onChange={(e)=>setNewRepo(e.target.value)} placeholder="Write the name of the repo"/>
+                <input value={newRepo} onChange={(e)=>setNewRepo(e.target.value)} placeholder="Write the name of the repo. Ex: facebook/react"/>
                 <button type="submit">Search</button>
             </Form>
             <Repositories>
