@@ -2,13 +2,22 @@ import React, {useState} from 'react'
 import { Title, Form, Repositories } from './DashElements'
 import logo from '../../assets/logo.svg'
 import {FiChevronRight} from 'react-icons/fi';
+import api from '../../services/api';
 
 function Dashboard() {
     const [newRepo, setNewRepo]=useState('')
     const [repositories, setRepositories]= useState([]);
-    const handleRepository=()=>{
+    async function  handleRepository(event){
         //Add new repo
-        console.log(newRepo);   
+        console.log(newRepo);  
+        event.preventDefault(); 
+
+        const response= await api.get(`repos/${newRepo}`);
+        console.log(response.data);
+        const repository=response.data;
+        setRepositories([...repositories, repository])
+        
+
     }
 
     return (
