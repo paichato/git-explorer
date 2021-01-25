@@ -1,22 +1,34 @@
 import React, {useState} from 'react'
-import { Title, Form, Repositories } from './DashElements'
+import { Title, Form, Repositories, Error } from './DashElements'
 import logo from '../../assets/logo.svg'
 import {FiChevronRight} from 'react-icons/fi';
 import api from '../../services/api';
 
 function Dashboard() {
-    const [newRepo, setNewRepo]=useState('')
+    const [newRepo, setNewRepo]=useState('');
+    const [inputError,setInputError]=useState('');
     const [repositories, setRepositories]= useState([]);
     async function  handleRepository(event){
         //Add new repo
         console.log(newRepo);  
         event.preventDefault(); 
 
-        const response= await api.get(`repos/${newRepo}`);
+        if(!newRepo){
+            setInputError('Type the author/name of the repo');
+            return;
+        }
+        try{
+            const response= await api.get(`repos/${newRepo}`);
         console.log(response.data);
         const repository=response.data;
         setRepositories([...repositories, repository]);
         setNewRepo('');
+        
+        }catch(err){
+            setInputError('Error on search for repo')
+
+        }
+
         
 
     }
@@ -29,6 +41,9 @@ function Dashboard() {
                 <input value={newRepo} onChange={(e)=>setNewRepo(e.target.value)} placeholder="Write the name of the repo. Ex: facebook/react"/>
                 <button type="submit">Search</button>
             </Form>
+
+            {inputError && <Error>{inputError}</Error>}
+
             <Repositories>
                {repositories.map(repository=>{
                    return(
