@@ -78,7 +78,7 @@ margin-top:80px;
 export const Issues=styled.div`
 
 margin-top:80px;
-max-width: 700px;
+/* max-width: 700px; */
 
 
 
@@ -98,14 +98,9 @@ a{
     }
     &+a{
     margin-top:16px;
-}
+    }
 }
 
-img{
-    width:64px;
-    height:64px;
-    border-radius:50%;
-}
 
 div{
     flex:1;
