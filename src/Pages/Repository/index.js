@@ -33,7 +33,7 @@ function Repository() {
                     </Link>
                 
            </Header>
-            {repository && (
+            {repository ? (
                 <RepositoryInfo>
                 <header>
                     <img src={repository.owner.avatar_url} alt={repository.owner.login} />
@@ -59,7 +59,7 @@ function Repository() {
                     </li>
                 </ul>
             </RepositoryInfo>
-            )}
+            ): (<p>Loading...</p>)}
             <Issues>
                 {issues.map(issue=>(
                 <a key={issue.id} href={issue.html_url} target="#blank" >
