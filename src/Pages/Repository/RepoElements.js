@@ -22,3 +22,5 @@ justify-content:space-between;
 
 
 `
+
+export const RepositoryInfo=styled.div``
