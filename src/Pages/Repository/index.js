@@ -1,48 +1,63 @@
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 import {useRouteMatch, Link} from 'react-router-dom';
 import { Header, Issues, RepositoryInfo } from './RepoElements';
 import logo from '../../assets/logo.svg';
 import {FiChevronLeft, FiChevronRight} from 'react-icons/fi';
+import api from '../../services/api';
 
 function Repository() {
     const {params}= useRouteMatch();
+    const [repository, setRepository]=useState(null);
+    const [issues, setIssues]=useState([])
+
+    useEffect(() => {
+        api.get(`repos/${params.repository}`).then(response=>{
+            console.log(response.data);
+        })
+        api.get(`repos/${params.repository}/issues`).then(response=>{
+            console.log(response.data);
+        })
+    }, [params.repository])
 
     return (
         <>
            <Header>
                 <img src={logo} alt="Github Explorer"/>
-                <Link to="/git-explorer">
+                {/* <Link to="/git-explorer"> */}
+                <Link to="/git-explorer/">
                 <FiChevronLeft size={16}/>
                     Back
                     
                     </Link>
                 
            </Header>
-            <RepositoryInfo>
+            {repository && (
+                <RepositoryInfo>
                 <header>
-                    <img src="https://avatars.githubusercontent.com/u/65548563?s=460&u=aeb76087c3f98948fe4228b17831d4d7cefb17ed&v=4" alt="paichato" />
+                    <img src={repository.owner.avatar_url} alt={repository.owner.login} />
                     <div>
-                        <strong>paichato/unform</strong>
-                        <p>Repo description</p>
+                        <strong>{repository.full_name}</strong>
+                        <p>{repository.description}</p>
                     </div>
                 </header>
                 <ul>
                     <li>
-                        <strong>1808</strong>
+                        <strong>{repository.stargazers_count}</strong>
                         <span>Stars</span>
                     </li>
 
                     <li>
-                        <strong>48</strong>
+                        <strong>{repository.forks_count}</strong>
                         <span>Forks</span>
                     </li>
 
                     <li>
-                        <strong>67</strong>
+                        <strong>{repository.open_issues_count}</strong>
                         <span>Open Issues</span>
                     </li>
                 </ul>
             </RepositoryInfo>
+            )}
             <Issues>
                 <Link  >
                     
