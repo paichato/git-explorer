@@ -1,6 +1,6 @@
 import React from 'react';
 import {useRouteMatch, Link} from 'react-router-dom';
-import { Header } from './RepoElements';
+import { Header, RepositoryInfo } from './RepoElements';
 import logo from '../../assets/logo.svg';
 import {FiChevronLeft} from 'react-icons/fi';
 
