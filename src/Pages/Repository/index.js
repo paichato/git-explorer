@@ -1,8 +1,8 @@
 import React from 'react';
 import {useRouteMatch, Link} from 'react-router-dom';
-import { Header, RepositoryInfo } from './RepoElements';
+import { Header, Issues, RepositoryInfo } from './RepoElements';
 import logo from '../../assets/logo.svg';
-import {FiChevronLeft} from 'react-icons/fi';
+import {FiChevronLeft, FiChevronRight} from 'react-icons/fi';
 
 function Repository() {
     const {params}= useRouteMatch();
@@ -43,6 +43,16 @@ function Repository() {
                     </li>
                 </ul>
             </RepositoryInfo>
+            <Issues>
+                <Link  >
+                    
+                    <div>
+                       <strong>sadasd</strong>
+                       <p>dadad</p>
+                    </div>
+                    <FiChevronRight size={20}/>
+                </Link>
+            </Issues>
 
         </>
     )
