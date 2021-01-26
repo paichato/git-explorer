@@ -13,9 +13,11 @@ function Repository() {
     useEffect(() => {
         api.get(`repos/${params.repository}`).then(response=>{
             console.log(response.data);
+            setRepository(response.data);
         })
         api.get(`repos/${params.repository}/issues`).then(response=>{
             console.log(response.data);
+            setIssues(response.data);
         })
     }, [params.repository])
 
@@ -59,14 +61,16 @@ function Repository() {
             </RepositoryInfo>
             )}
             <Issues>
-                <Link  >
+                {issues.map(issue=>(
+                <a key={issue.id} href={issue.html_url} target="#blank" >
                     
                     <div>
-                       <strong>sadasd</strong>
-                       <p>dadad</p>
+                       <strong>{issue.title}</strong>
+                       <p>{issue.user.login}</p>
                     </div>
                     <FiChevronRight size={20}/>
-                </Link>
+                </a>
+                ))}
             </Issues>
 
         </>
