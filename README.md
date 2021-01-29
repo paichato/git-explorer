@@ -3,6 +3,7 @@ A web app that consumes the github API to explore repositories(issues, stars,etc
 
 ## What the app looks like
 ![banner](https://github.com/paichato/git-explorer/blob/main/git-explorer-preview.PNG)
+![banner](https://github.com/paichato/git-explorer/blob/main/preview%20git-explorer2.PNG)
 
 ## How to run the app
 1. Either click on the link on the right panel or fork/download the app and open the folder in the CLI
@@ -38,8 +39,16 @@ A web app that consumes the github API to explore repositories(issues, stars,etc
 ---|---|---
 polished|react-router-dom|react-icons
 
+## Why
+This project is part of my personall portfolio. It was built based on @rocketseat module but on ReactJS version.<br/>
+Email: tsenane14@gmail.com | Contact me at [Linkedin](https://www.linkedin.com/in/marlon-d-jesus-6874271ab/) 
+---- | ----
+:
+
+UI/UX credits: @rocketseat.
 
 ## Future Features
+- Light/Dark Theme
 
 ---
 
